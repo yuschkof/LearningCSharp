@@ -1,0 +1,16 @@
+O:\LearnCSharp\LearningCSharp\bin\Debug\net5.0\LearningCHarp.exe
+O:\LearnCSharp\LearningCSharp\bin\Debug\net5.0\LearningCHarp.deps.json
+O:\LearnCSharp\LearningCSharp\bin\Debug\net5.0\LearningCHarp.runtimeconfig.json
+O:\LearnCSharp\LearningCSharp\bin\Debug\net5.0\LearningCHarp.runtimeconfig.dev.json
+O:\LearnCSharp\LearningCSharp\bin\Debug\net5.0\LearningCHarp.dll
+O:\LearnCSharp\LearningCSharp\bin\Debug\net5.0\ref\LearningCHarp.dll
+O:\LearnCSharp\LearningCSharp\bin\Debug\net5.0\LearningCHarp.pdb
+O:\LearnCSharp\LearningCSharp\obj\Debug\net5.0\LearningCHarp.csproj.AssemblyReference.cache
+O:\LearnCSharp\LearningCSharp\obj\Debug\net5.0\LearningCHarp.GeneratedMSBuildEditorConfig.editorconfig
+O:\LearnCSharp\LearningCSharp\obj\Debug\net5.0\LearningCHarp.AssemblyInfoInputs.cache
+O:\LearnCSharp\LearningCSharp\obj\Debug\net5.0\LearningCHarp.AssemblyInfo.cs
+O:\LearnCSharp\LearningCSharp\obj\Debug\net5.0\LearningCHarp.csproj.CoreCompileInputs.cache
+O:\LearnCSharp\LearningCSharp\obj\Debug\net5.0\LearningCHarp.dll
+O:\LearnCSharp\LearningCSharp\obj\Debug\net5.0\ref\LearningCHarp.dll
+O:\LearnCSharp\LearningCSharp\obj\Debug\net5.0\LearningCHarp.pdb
+O:\LearnCSharp\LearningCSharp\obj\Debug\net5.0\LearningCHarp.genruntimeconfig.cache
