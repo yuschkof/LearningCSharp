@@ -8,8 +8,9 @@ namespace LearningCHarp
         {
             Start();
         }
-        
-        static void Start() {
+
+        static void Start()
+        {
             Console.WriteLine("Шалом");
         }
     }
