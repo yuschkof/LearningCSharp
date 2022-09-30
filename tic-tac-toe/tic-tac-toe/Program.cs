@@ -5,8 +5,8 @@ using System.Net.Mail;
 
 Boolean check = true;
 int temp;
-String[,] pole = new String[3, 3];
-crateMatrix(pole);
+string[] pole = new string[9] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+//crateMatrix(pole);
 if (check == true)
     main();
 
@@ -43,114 +43,80 @@ void main()
 }
 
 
-
+void whoFirst(string pl1, string pl2, string whoStep1, string whoWin1, string whoStep2, string whoWin2)
+{
+    for (temp = 0; temp < 9;)
+    {
+        if (check)
+        {
+            if (temp % 2 == 0)
+            {
+                Console.WriteLine(whoStep1);
+                step(pl1);
+                checkWin(pl1, whoWin1);
+                printMatrix(pole);
+            }
+            else
+            {
+                Console.WriteLine(whoStep2);
+                step(pl2);
+                checkWin(pl2, whoWin2);
+                printMatrix(pole);
+            }
+        }
+    }
+    Console.WriteLine("Ничьяяя");
+}
 
 void game(String choosSide)
 {
     if (choosSide == "k")
     {
-        for (temp = 0; temp < 9;)
-        {
-            if (check)
-            {
-                if (temp % 2 == 0)
-                {
-                    Console.WriteLine("Крестики ходят:");
-                    step("X");
-                    checkWin("X", "Крестики победили");
-                    printMatrix(pole);
-                }
-                else
-                {
-                    Console.WriteLine("Нолики ходят:");
-                    step("O");
-                    checkWin("O", "Нолики победили");
-                    printMatrix(pole);
-                }
-            }
-        }
-        Console.WriteLine("Ничьяяя");
-    }
-
-    if (choosSide == "n")
+        whoFirst("X", "O", "Крестики ходят:", "Крестики победили", "Нолики ходят:", "Нолики победили");
+    } else
     {
-        for (temp = 0; temp < 9;)
-        {
-            if (check)
-            {
-                if (temp % 2 == 0)
-                {
-                    Console.WriteLine("Нолики ходят:");
-                    step("X");
-                    checkWin("O", "Нолики победили");
-                    printMatrix(pole);
-                }
-                else
-                {
-                    Console.WriteLine("Крестики ходят:");
-                    step("O");
-                    checkWin("X", "Крестики победили");
-                    printMatrix(pole);
-                }
-            }
-        }
-        Console.WriteLine("Ничьяяя");
+        whoFirst("O", "X", "Нолики ходят:", "Нолики победили", "Крестики ходят:", "Крестики победили");
     }
 }
 
-
-void crateMatrix(String[,] arr)
+void printMatrix(string[] arr)
 {
-    int temp = 1;
-    for (int i = 0; i < arr.GetLength(0); i++)
+    
+    string msg = "";
+    for (int i = 0; i < arr.Length; i++)
     {
-        for (int j = 0; j < arr.GetLength(1); j++)
+        if ((i + 1) % 3 == 1)
         {
-            arr[i, j] = Convert.ToString(temp);
-            temp++;
+            msg += $"-------------\n| {arr[i]} ";
+        }
+        else if ((i + 1) % 3 == 2)
+        {
+            msg += $"| {arr[i]} |";
+        }
+        else
+        {
+            msg += $" {arr[i]} |\n";
         }
     }
+    msg += "-------------";
+    Console.WriteLine(msg);
 }
 
-void printMatrix(String[,] arr)
+bool checkFill(int i)
 {
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            Console.Write($"{arr[i, j]}  ");
-        }
-        Console.WriteLine();
-    }
-}
-
-bool checkFill(int i, int j)
-{
-    if (pole[i, j] == "X") return true;
-    else if (pole[i, j] == "O") return true;
+    if (pole[i] == "X") return true;
+    else if (pole[i] == "O") return true;
     else return false;
 }
 
 void step(string xo)
 {
-    int i = 0;
-    int j = 0;
     Console.WriteLine("Введите позицию");
     int a = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine("");
     if (a > 0 && a < 10)
     {
-        if (a != 3 || a != 6 || a != 9)
-        {
-            i = a / 3;
-            j = a % 3 - 1;
-        }
-        if (a == 3) { i = 0; j = 2; }
-        if (a == 6) { i = 1; j = 2; }
-        if (a == 9) { i = 2; j = 2; }
-
-
-        if (checkFill(i, j))
+        if (checkFill(a - 1))
         {
             Console.WriteLine("Позиция занята");
             if (xo == "X") step("X");
@@ -159,7 +125,7 @@ void step(string xo)
         }
         else
         {
-            pole[i, j] = xo;
+            pole[a - 1] = xo;
             temp++;
         }
     }
@@ -169,47 +135,46 @@ void step(string xo)
         if (xo == "X") step("X");
         else step("O");
     }
-
 }
 
 void checkWin(string xo, string whowin)
 {
-    if (pole[0, 0] == xo && pole[0, 1] == xo && pole[0, 2] == xo)
+    if (pole[0] == xo && pole[1] == xo && pole[2] == xo)
     {
         Console.WriteLine(whowin);
         check = false;
     }
-    else if (pole[1, 0] == xo && pole[1, 1] == xo && pole[1, 2] == xo)
+    else if (pole[3] == xo && pole[4] == xo && pole[5] == xo)
     {
         Console.WriteLine(whowin);
         check = false;
     }
-    else if (pole[2, 0] == xo && pole[2, 1] == xo && pole[2, 2] == xo)
+    else if (pole[6] == xo && pole[7] == xo && pole[8] == xo)
     {
         Console.WriteLine(whowin);
         check = false;
     }
-    else if (pole[0, 0] == xo && pole[1, 0] == xo && pole[2, 0] == xo)
+    else if (pole[0] == xo && pole[3] == xo && pole[6] == xo)
     {
         Console.WriteLine(whowin);
         check = false;
     }
-    else if (pole[0, 1] == xo && pole[1, 1] == xo && pole[2, 1] == xo)
+    else if (pole[1] == xo && pole[4] == xo && pole[7] == xo)
     {
         Console.WriteLine(whowin);
         check = false;
     }
-    else if (pole[0, 2] == xo && pole[1, 2] == xo && pole[2, 2] == xo)
+    else if (pole[2] == xo && pole[5] == xo && pole[8] == xo)
     {
         Console.WriteLine(whowin);
         check = false;
     }
-    else if (pole[0, 0] == xo && pole[1, 1] == xo && pole[2, 2] == xo)
+    else if (pole[0] == xo && pole[4] == xo && pole[8] == xo)
     {
         Console.WriteLine(whowin);
         check = false;
     }
-    else if (pole[2, 0] == xo && pole[1, 1] == xo && pole[0, 2] == xo)
+    else if (pole[2] == xo && pole[4] == xo && pole[6] == xo)
     {
         Console.WriteLine(whowin);
         check = false;
