@@ -6,16 +6,14 @@ using System.Net.Mail;
 Boolean check = true;
 int temp;
 string[] pole = new string[9] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-//crateMatrix(pole);
 if (check == true)
     main();
-
 
 
 void main()
 {
     Console.WriteLine("Добро пожаловать в игру Крестики-нолики");
-    Console.WriteLine("Для хода пишите координаты, начина с 1 по 3, первое число строка, второе столбец");
+    Console.WriteLine("Для хода пишите цифру соответствующую вашему желанию");
     Console.WriteLine("Выберите кто ходит первым: Крестики - k, Нолики - n");
     String? choosSide = Console.ReadLine();
     int temp = 0;
@@ -73,7 +71,8 @@ void game(String choosSide)
     if (choosSide == "k")
     {
         whoFirst("X", "O", "Крестики ходят:", "Крестики победили", "Нолики ходят:", "Нолики победили");
-    } else
+    }
+    else
     {
         whoFirst("O", "X", "Нолики ходят:", "Нолики победили", "Крестики ходят:", "Крестики победили");
     }
@@ -81,7 +80,7 @@ void game(String choosSide)
 
 void printMatrix(string[] arr)
 {
-    
+
     string msg = "";
     for (int i = 0; i < arr.Length; i++)
     {
