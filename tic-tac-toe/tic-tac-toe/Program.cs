@@ -1,8 +1,9 @@
-﻿using System;
-using System.Drawing;
-using System.Net.Mail;
+﻿using Console = Chubrik.Console.XConsole;
 
-
+string kStep = "Крестики ходят:";
+string nStep = "Нолики ходят:";
+string kWin = "Крестик победили, КРАСАВАА";
+string nWin = "Нолик победили, КРАСАВАА";
 Boolean check = true;
 int temp;
 string[] pole = new string[9] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -12,34 +13,68 @@ if (check == true)
 
 void main()
 {
-    Console.WriteLine("Добро пожаловать в игру Крестики-нолики");
-    Console.WriteLine("Для хода пишите цифру соответствующую вашему желанию");
-    Console.WriteLine("Выберите кто ходит первым: Крестики - k, Нолики - n");
+    Console.WriteLine("Добро пожаловать в игру Крестики-нолики \n" +
+                      "Для хода пишите цифру соответствующую вашему желанию \n" +
+                      "Выберите кто ходит первым: Крестики - k, Нолики - n");
     String? choosSide = Console.ReadLine();
     int temp = 0;
     while (temp == 0)
     {
         if (choosSide == "k")
         {
-            printMatrix(pole);
             game(choosSide);
             temp = 1;
 
         }
         else if (choosSide == "n")
         {
-            printMatrix(pole);
             game(choosSide);
             temp = 1;
         }
         else if (choosSide != "n" && choosSide != "k")
         {
-            Console.WriteLine("Введите плиз нужную букву");
+            Console.Clear();
+            Console.WriteLine("Введите плиз нужную букву: k или n");
             choosSide = Console.ReadLine();
         }
     }
 }
 
+void printMatrix(string[] arr)
+{
+    string res = "";
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if ((i + 1) % 3 == 1)
+        {
+            res += $"-------------\n| {arr[i]} ";
+        }
+        else if ((i + 1) % 3 == 2)
+        {
+            res += $"| {arr[i]} |";
+        }
+        else
+        {
+            res += $" {arr[i]} |\n";
+        }
+    }
+    res += "-------------";
+    Console.WriteLine(res);
+}
+
+void game(String choosSide)
+{
+    Console.Clear();
+    printMatrix(pole);
+    if (choosSide == "k")
+    {
+        whoFirst("X", "O", kStep, kWin, nStep, nWin);
+    }
+    else
+    {
+        whoFirst("O", "X", nStep, nWin, kStep, kWin);
+    }
+}
 
 void whoFirst(string pl1, string pl2, string whoStep1, string whoWin1, string whoStep2, string whoWin2)
 {
@@ -66,41 +101,6 @@ void whoFirst(string pl1, string pl2, string whoStep1, string whoWin1, string wh
     Console.WriteLine("Ничьяяя");
 }
 
-void game(String choosSide)
-{
-    if (choosSide == "k")
-    {
-        whoFirst("X", "O", "Крестики ходят:", "Крестики победили", "Нолики ходят:", "Нолики победили");
-    }
-    else
-    {
-        whoFirst("O", "X", "Нолики ходят:", "Нолики победили", "Крестики ходят:", "Крестики победили");
-    }
-}
-
-void printMatrix(string[] arr)
-{
-
-    string msg = "";
-    for (int i = 0; i < arr.Length; i++)
-    {
-        if ((i + 1) % 3 == 1)
-        {
-            msg += $"-------------\n| {arr[i]} ";
-        }
-        else if ((i + 1) % 3 == 2)
-        {
-            msg += $"| {arr[i]} |";
-        }
-        else
-        {
-            msg += $" {arr[i]} |\n";
-        }
-    }
-    msg += "-------------";
-    Console.WriteLine(msg);
-}
-
 bool checkFill(int i)
 {
     if (pole[i] == "X") return true;
@@ -124,6 +124,7 @@ void step(string xo)
         }
         else
         {
+            Console.Clear();
             pole[a - 1] = xo;
             temp++;
         }
