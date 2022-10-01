@@ -1,4 +1,5 @@
-﻿using Console = Chubrik.Console.XConsole;
+﻿using Pastel;
+using System.Drawing;
 
 string kStep = "Крестики ходят:";
 string nStep = "Нолики ходят:";
@@ -42,20 +43,34 @@ void main()
 
 void printMatrix(string[] arr)
 {
+    string color = "";
     string res = "";
     for (int i = 0; i < arr.Length; i++)
     {
-        if ((i + 1) % 3 == 1)
+        
+        if (arr[i] == "O")
         {
-            res += $"-------------\n| {arr[i]} ";
+            color = "#4682B4";
         }
-        else if ((i + 1) % 3 == 2)
+        else if (arr[i] == "X")
         {
-            res += $"| {arr[i]} |";
+            color = "#DC143C";
         }
         else
         {
-            res += $" {arr[i]} |\n";
+            color = "#000000";
+        }
+        if ((i + 1) % 3 == 1)
+        {
+            res += $"-------------\n| {arr[i].PastelBg(color)} ";
+        }
+        else if ((i + 1) % 3 == 2)
+        {
+            res += $"| {arr[i].PastelBg(color)} |";
+        }
+        else
+        {
+            res += $" {arr[i].PastelBg(color)} |\n";
         }
     }
     res += "-------------";
