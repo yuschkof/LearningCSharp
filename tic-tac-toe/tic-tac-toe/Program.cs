@@ -81,14 +81,8 @@ void game(String choosSide)
 {
     Console.Clear();
     printMatrix(pole);
-    if (choosSide == "k")
-    {
-        whoFirst("X", "O", kStep, kWin, nStep, nWin);
-    }
-    else
-    {
-        whoFirst("O", "X", nStep, nWin, kStep, kWin);
-    }
+    if (choosSide == "k") whoFirst("X", "O", kStep, kWin, nStep, nWin);
+    else whoFirst("O", "X", nStep, nWin, kStep, kWin);
 }
 
 void whoFirst(string pl1, string pl2, string whoStep1, string whoWin1, string whoStep2, string whoWin2)
@@ -101,19 +95,23 @@ void whoFirst(string pl1, string pl2, string whoStep1, string whoWin1, string wh
             {
                 Console.WriteLine(whoStep1);
                 step(pl1);
-                checkWin(pl1, whoWin1);
                 printMatrix(pole);
+                if (checkWin(pl1, whoWin1)) Console.WriteLine(whoWin1);
             }
             else
             {
                 Console.WriteLine(whoStep2);
                 step(pl2);
-                checkWin(pl2, whoWin2);
                 printMatrix(pole);
+                if (checkWin(pl2, whoWin2)) Console.WriteLine(whoWin2);
+                
             }
         }
     }
-    Console.WriteLine("Ничьяяя");
+    if (checkWin(pl1, whoWin1) != true && checkWin(pl2, whoWin2) != true)
+    {
+        Console.WriteLine("Ничьяяя");
+    }
 }
 
 bool checkFill(int i)
@@ -152,46 +150,47 @@ void step(string xo)
     }
 }
 
-void checkWin(string xo, string whowin)
+bool checkWin(string xo, string whowin)
 {
     if (pole[0] == xo && pole[1] == xo && pole[2] == xo)
     {
-        Console.WriteLine(whowin);
         check = false;
+        return true;
     }
     else if (pole[3] == xo && pole[4] == xo && pole[5] == xo)
     {
-        Console.WriteLine(whowin);
         check = false;
+        return true;
     }
     else if (pole[6] == xo && pole[7] == xo && pole[8] == xo)
     {
-        Console.WriteLine(whowin);
         check = false;
+        return true;
     }
     else if (pole[0] == xo && pole[3] == xo && pole[6] == xo)
     {
-        Console.WriteLine(whowin);
         check = false;
+        return true;
     }
     else if (pole[1] == xo && pole[4] == xo && pole[7] == xo)
     {
-        Console.WriteLine(whowin);
         check = false;
+        return true;
     }
     else if (pole[2] == xo && pole[5] == xo && pole[8] == xo)
     {
-        Console.WriteLine(whowin);
         check = false;
+        return true;
     }
     else if (pole[0] == xo && pole[4] == xo && pole[8] == xo)
     {
-        Console.WriteLine(whowin);
         check = false;
+        return true;
     }
     else if (pole[2] == xo && pole[4] == xo && pole[6] == xo)
     {
-        Console.WriteLine(whowin);
         check = false;
+        return true;
     }
+    return false;
 }
