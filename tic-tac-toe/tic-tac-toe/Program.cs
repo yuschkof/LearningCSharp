@@ -14,6 +14,7 @@ if (check == true)
 
 void main()
 {
+    printMatrix(pole);
     Console.WriteLine("Добро пожаловать в игру Крестики-нолики \n" +
                       "Для хода пишите цифру соответствующую вашему желанию \n" +
                       "Выберите кто ходит первым: Крестики - k, Нолики - n");
@@ -157,37 +158,37 @@ bool checkWin(string xo, string whowin)
         check = false;
         return true;
     }
-    else if (pole[3] == xo && pole[4] == xo && pole[5] == xo)
+    if (pole[3] == xo && pole[4] == xo && pole[5] == xo)
     {
         check = false;
         return true;
     }
-    else if (pole[6] == xo && pole[7] == xo && pole[8] == xo)
+    if (pole[6] == xo && pole[7] == xo && pole[8] == xo)
     {
         check = false;
         return true;
     }
-    else if (pole[0] == xo && pole[3] == xo && pole[6] == xo)
+    if (pole[0] == xo && pole[3] == xo && pole[6] == xo)
     {
         check = false;
         return true;
     }
-    else if (pole[1] == xo && pole[4] == xo && pole[7] == xo)
+    if (pole[1] == xo && pole[4] == xo && pole[7] == xo)
     {
         check = false;
         return true;
     }
-    else if (pole[2] == xo && pole[5] == xo && pole[8] == xo)
+    if (pole[2] == xo && pole[5] == xo && pole[8] == xo)
     {
         check = false;
         return true;
     }
-    else if (pole[0] == xo && pole[4] == xo && pole[8] == xo)
+    if (pole[0] == xo && pole[4] == xo && pole[8] == xo)
     {
         check = false;
         return true;
     }
-    else if (pole[2] == xo && pole[4] == xo && pole[6] == xo)
+    if (pole[2] == xo && pole[4] == xo && pole[6] == xo)
     {
         check = false;
         return true;
